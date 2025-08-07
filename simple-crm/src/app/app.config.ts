@@ -6,9 +6,11 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
+// Firebase imports
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
+// Firebase config direkt hier - KEINE environments!
 const firebaseConfig = {
   apiKey: "AIzaSyBJ0PSZqz_ezicpLMy9WaxC8BigpFfIuY0",
   authDomain: "simple-crm-9127b.firebaseapp.com",
@@ -20,12 +22,13 @@ const firebaseConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
     provideClientHydration(withEventReplay()),
     provideAnimations(),
     provideNativeDateAdapter(),
-
+    
+    // Firebase providers
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore())
   ]
