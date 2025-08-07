@@ -1,3 +1,5 @@
+@use './styles/variables' as vars;
+
 html,
 body {
     height: 100%;
@@ -6,4 +8,95 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// ===== GLOBAL BUTTON STYLES mit höherer Spezifität =====
+
+// Standard Material Buttons - höhere Spezifität
+.mat-mdc-button.mat-mdc-button,
+.mat-mdc-raised-button.mat-mdc-raised-button,
+.mat-mdc-outlined-button.mat-mdc-outlined-button {
+  &:not([disabled]) {
+    --mdc-filled-button-container-color: #{vars.$primary-lavender} !important;
+    --mdc-protected-button-container-color: #{vars.$primary-lavender} !important;
+    --mdc-outlined-button-outline-color: #{vars.$primary-lavender} !important;
+    background-color: vars.$primary-lavender !important;
+    color: vars.$text-light !important;
+    border-color: vars.$primary-lavender !important;
+    
+    &:hover {
+      --mdc-filled-button-hover-container-color: #{vars.$primary-lavender-dark} !important;
+      background-color: vars.$primary-lavender-dark !important;
+      border-color: vars.$primary-lavender-dark !important;
+    }
+    
+    &:active {
+      background-color: vars.$primary-lavender-darker !important;
+      border-color: vars.$primary-lavender-darker !important;
+    }
+  }
+}
+
+// Floating Action Buttons - höhere Spezifität
+.mat-mdc-fab.mat-mdc-fab,
+.mat-mdc-mini-fab.mat-mdc-mini-fab {
+  &:not([disabled]) {
+    --mdc-fab-container-color: #{vars.$primary-lavender} !important;
+    background-color: vars.$primary-lavender !important;
+    color: vars.$text-light !important;
+    
+    &:hover {
+      --mdc-fab-hover-container-color: #{vars.$primary-lavender-dark} !important;
+      background-color: vars.$primary-lavender-dark !important;
+    }
+    
+    &:active {
+      background-color: vars.$primary-lavender-darker !important;
+    }
+  }
+}
+
+// Icon Buttons
+.mat-mdc-icon-button.mat-mdc-icon-button {
+  &:not([disabled]) {
+    color: vars.$primary-lavender !important;
+    
+    &:hover {
+      background-color: rgba(184, 169, 217, 0.1) !important;
+      color: vars.$primary-lavender-dark !important;
+    }
+  }
+}
+
+// Alternative Button-Varianten
+.mat-mdc-button {
+  &.btn-secondary:not([disabled]) {
+    background-color: vars.$secondary-sage !important;
+    color: vars.$text-light !important;
+    
+    &:hover {
+      background-color: vars.$secondary-sage-dark !important;
+    }
+  }
+  
+  &.btn-accent:not([disabled]) {
+    background-color: vars.$accent-peach !important;
+    color: vars.$text-primary !important;
+    
+    &:hover {
+      background-color: vars.$accent-peach-dark !important;
+    }
+  }
+}
+
+// Disabled Button States
+.mat-mdc-button[disabled],
+.mat-mdc-raised-button[disabled],
+.mat-mdc-outlined-button[disabled],
+.mat-mdc-fab[disabled],
+.mat-mdc-mini-fab[disabled],
+.mat-mdc-icon-button[disabled] {
+  background-color: vars.$neutral-medium !important;
+  color: vars.$text-muted !important;
+  border-color: vars.$neutral-medium !important;
 }
