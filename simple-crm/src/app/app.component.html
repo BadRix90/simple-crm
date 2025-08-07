@@ -1,13 +1,37 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
+<mat-drawer-container class="mat-drawer-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="over" opened="true">
+    <div class="sidebar-header">
+      <mat-icon class="close-icon" (click)="drawer.close()" aria-label="Close sidebar">close</mat-icon>
+    </div>
+    <div class="sidebar-content">
+      <div class="logo-container">
+        <img src="assets/img/logo/logo_crm.webp" alt="CRM Logo" class="logo">
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li class="nav-item" routerLink="/dashboard" routerLinkActive="active">
+            <mat-icon class="nav-icon">dashboard</mat-icon>
+            <span>Dashboard</span>
+          </li>
+          <li class="nav-item" routerLink="/user" routerLinkActive="active">
+            <mat-icon class="nav-icon">people</mat-icon>
+            <span>User</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <mat-toolbar>
-      <span>Simple CRM</span>
+      <mat-icon class="example-icon" (click)="drawer.open()">
+        menu
+      </mat-icon>
+      <span class="toolbar-title">Simple CRM</span>
     </mat-toolbar>
-  </div>
 
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </mat-drawer-container>
-<router-outlet></router-outlet>

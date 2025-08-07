@@ -1,0 +1,108 @@
+// ===== COLOR PALETTE =====
+// Primary Colors (Lavender Tones)
+$primary-lavender: #B8A9D9 !default;
+$primary-lavender-light: #D4C7E8 !default;
+$primary-lavender-dark: #9A85C2 !default;
+$primary-lavender-darker: #7D659C !default;
+
+// Secondary Colors (Sage Green)
+$secondary-sage: #B5C8A7 !default;
+$secondary-sage-light: #D1E0C6 !default;
+$secondary-sage-dark: #9BB088 !default;
+$secondary-sage-darker: #7A9168 !default;
+
+// Accent Colors (Soft Peach)
+$accent-peach: #F4D1C1 !default;
+$accent-peach-light: #F8E4D8 !default;
+$accent-peach-dark: #E8B8A3 !default;
+
+// Neutral Colors (Warm Grays)
+$neutral-white: #FDFCFB !default;
+$neutral-light: #F7F6F4 !default;
+$neutral-lighter: #F0EFED !default;
+$neutral-medium: #E8E6E3 !default;
+$neutral-dark: #C8C5C1 !default;
+$neutral-darker: #A8A39E !default;
+$neutral-darkest: #6B6560 !default;
+
+// Text Colors
+$text-primary: #4A4642 !default;
+$text-secondary: #6B6560 !default;
+$text-muted: #A8A39E !default;
+$text-light: #FDFCFB !default;
+
+// Background Colors
+$bg-primary: $neutral-white !default;
+$bg-secondary: $neutral-light !default;
+$bg-tertiary: $neutral-lighter !default;
+$bg-sidebar: $primary-lavender-light !default;
+$bg-card: $neutral-white !default;
+
+// Border Colors
+$border-light: $neutral-medium !default;
+$border-medium: $neutral-dark !default;
+$border-dark: $neutral-darker !default;
+
+// Status Colors (Soft versions)
+$success: #A8D5A8 !default;
+$success-light: #C8E6C8 !default;
+$success-dark: #88C088 !default;
+
+$warning: #F2D194 !default;
+$warning-light: #F8E4B8 !default;
+$warning-dark: #E8C070 !default;
+
+$error: #E8A8A8 !default;
+$error-light: #F0C8C8 !default;
+$error-dark: #D88888 !default;
+
+$info: #A8C8E8 !default;
+$info-light: #C8DCF0 !default;
+$info-dark: #88B0D8 !default;
+
+// ===== SPACING =====
+$spacing-xs: 4px !default;
+$spacing-sm: 8px !default;
+$spacing-md: 16px !default;
+$spacing-lg: 24px !default;
+$spacing-xl: 32px !default;
+$spacing-xxl: 48px !default;
+
+// ===== TYPOGRAPHY =====
+$font-size-xs: 12px !default;
+$font-size-sm: 14px !default;
+$font-size-md: 16px !default;
+$font-size-lg: 18px !default;
+$font-size-xl: 24px !default;
+$font-size-xxl: 32px !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+// ===== BORDERS & RADIUS =====
+$border-radius-sm: 4px !default;
+$border-radius-md: 8px !default;
+$border-radius-lg: 12px !default;
+$border-radius-xl: 16px !default;
+
+$border-width-thin: 1px !default;
+$border-width-medium: 2px !default;
+$border-width-thick: 3px !default;
+
+// ===== SHADOWS =====
+$shadow-light: 0 2px 4px rgba(75, 70, 66, 0.1) !default;
+$shadow-medium: 0 4px 8px rgba(75, 70, 66, 0.15) !default;
+$shadow-heavy: 0 8px 16px rgba(75, 70, 66, 0.2) !default;
+
+// ===== LAYOUT =====
+$sidebar-width: 250px !default;
+$header-height: 64px !default;
+$container-max-width: 1200px !default;
+
+// ===== TRANSITIONS =====
+$transition-fast: 0.2s ease !default;
+$transition-medium: 0.3s ease !default;
+$transition-slow: 0.5s ease !default;

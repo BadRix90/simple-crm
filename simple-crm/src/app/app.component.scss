@@ -1,7 +1,128 @@
-.example-spacer {
-  flex: 1 1 auto;
+@use '../styles/variables.scss' as vars;
+
+.mat-drawer-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: vars.$sidebar-width;
+  padding: vars.$spacing-sm;
+  background-color: vars.$bg-sidebar;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: vars.$spacing-md;
+  border-bottom: vars.$border-width-thin solid vars.$border-light;
+}
+
+.close-icon {
+  cursor: pointer;
+  transition: transform vars.$transition-medium;
+  color: vars.$text-secondary;
+  
+  &:hover {
+    transform: scale(1.1);
+    color: vars.$text-primary;
+  }
+}
+
+.sidebar-content {
+  border-bottom: vars.$border-width-thin solid vars.$border-light;
+}
+
+.nav-menu {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: vars.$spacing-md vars.$spacing-lg;
+  cursor: pointer;
+  transition: all vars.$transition-medium;
+  color: vars.$text-secondary;
+  border-radius: vars.$border-radius-md;
+  margin: vars.$spacing-sm 0;
+  
+  &:hover {
+    background-color: vars.$primary-lavender;
+    color: vars.$text-light;
+    transform: translateX(4px);
+  }
+  
+  span {
+    font-size: vars.$font-size-md;
+    font-weight: vars.$font-weight-medium;
+  }
+}
+
+.nav-icon {
+  margin-right: vars.$spacing-md;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-toolbar {
+  position: relative;
+  background-color: vars.$primary-lavender !important;
+  color: vars.$text-light;
+  height: vars.$header-height;
+}
+
+.toolbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: vars.$font-size-xl;
+  font-weight: vars.$font-weight-medium;
+  white-space: nowrap;
+  color: vars.$text-light;
+}
+
+.main-content {
+  flex: 1;
+  padding: vars.$spacing-lg;
+  overflow: auto;
+  background-color: vars.$bg-primary;
 }
 
 .example-icon {
-  padding: 0 14px;
+  padding: 0 vars.$spacing-sm;
+  cursor: pointer;
+  transition: transform vars.$transition-medium;
+  color: vars.$text-light;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logo-container {
+  padding: vars.$spacing-lg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: vars.$border-width-thin solid vars.$border-light;
+  margin-bottom: vars.$spacing-md;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 60px;
+  height: auto;
+  object-fit: contain;
 }
