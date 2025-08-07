@@ -11,14 +11,12 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatDialog,
     MatDialogModule
-
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
@@ -29,19 +27,4 @@ export class UserComponent {
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
