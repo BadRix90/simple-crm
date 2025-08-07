@@ -2,12 +2,25 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-width: 400px;
+  min-width: 450px;
   padding: 20px 0;
 }
 
 mat-form-field {
   width: 100%;
+}
+
+.address-row {
+  display: flex;
+  gap: 16px;
+  
+  .zip-field {
+    flex: 0 0 120px; // Feste Breite für PLZ
+  }
+  
+  .city-field {
+    flex: 1; // Rest des Platzes für Stadt
+  }
 }
 
 mat-dialog-actions {

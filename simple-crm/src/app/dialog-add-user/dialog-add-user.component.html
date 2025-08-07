@@ -5,24 +5,44 @@
     
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="user.firstName" placeholder="Enter first name">
+      <input matInput [(ngModel)]="user.firstName" placeholder="Enter first name" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="user.lastName" placeholder="Enter last name">
+      <input matInput [(ngModel)]="user.lastName" placeholder="Enter last name" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" [(ngModel)]="user.email" placeholder="Enter email address">
-      <mat-hint>We'll never share your email</mat-hint>
+      <mat-label>Birth Date</mat-label>
+      <input matInput 
+             [matDatepicker]="picker" 
+             [(ngModel)]="user.birthDate" 
+             placeholder="dd.mm.yyyy"
+             (input)="formatDateInput($event)"
+             maxlength="10">
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Phone</mat-label>
-      <input matInput type="tel" [(ngModel)]="user.phone" placeholder="Enter phone number">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="user.address" placeholder="Enter street address">
     </mat-form-field>
+
+    <div class="address-row">
+      <mat-form-field appearance="outline" class="zip-field">
+        <mat-label>ZIP Code</mat-label>
+        <input matInput [(ngModel)]="user.zipCode" placeholder="12345" maxlength="5">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="city-field">
+        <mat-label>City</mat-label>
+        <input matInput [(ngModel)]="user.city" placeholder="Enter city">
+      </mat-form-field>
+    </div>
 
   </div>
 </mat-dialog-content>
