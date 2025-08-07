@@ -8,6 +8,7 @@
   width: vars.$sidebar-width;
   padding: vars.$spacing-sm;
   background-color: vars.$bg-sidebar;
+  border-radius: 0 !important;
 }
 
 .sidebar-header {
