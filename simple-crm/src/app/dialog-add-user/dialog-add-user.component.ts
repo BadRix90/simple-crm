@@ -1,26 +1,14 @@
-// dialog-add-user.component.ts
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-
-// Deutsches Datumsformat definieren
-export const DE_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD.MM.YYYY',
-  },
-  display: {
-    dateInput: 'DD.MM.YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'DD.MM.YYYY',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
+import { User } from '../../models/user.class';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -34,38 +22,14 @@ export const DE_DATE_FORMATS = {
     MatIconModule,
     FormsModule
   ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
-    { provide: MAT_DATE_FORMATS, useValue: DE_DATE_FORMATS }
-  ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss'
 })
 export class DialogAddUserComponent {
-  
-  // Datenmodell für den Benutzer
-  user = {
-    firstName: '',
-    lastName: '',
-    birthDate: null as Date | null,
-    address: '',
-    zipCode: '',
-    city: ''
-  };
 
-  // Für das Input-Masking
-  formatDateInput(event: any): void {
-    let value = event.target.value.replace(/\D/g, ''); // Nur Zahlen
-    
-    if (value.length >= 2) {
-      value = value.substring(0, 2) + '.' + value.substring(2);
-    }
-    if (value.length >= 5) {
-      value = value.substring(0, 5) + '.' + value.substring(5, 9);
-    }
-    
-    event.target.value = value;
-  }
+  user = new User();
+  birthDate: Date | null = null;  // Für den Datepicker
+  firestore: Firestore = inject(Firestore);
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
 
@@ -73,7 +37,30 @@ export class DialogAddUserComponent {
     this.dialogRef.close();
   }
 
-  onSave(): void {
-    this.dialogRef.close(this.user);
+  async onSave(): Promise<void> {
+    // Datum vom Datepicker in User-Objekt übertragen
+    if (this.birthDate) {
+      this.user.birthDate = this.birthDate.getTime();
+    }
+    
+    console.log('Saving user:', this.user);
+    
+    try {
+      // User zu Firebase Firestore hinzufügen - direkt das Objekt verwenden
+      const usersCollection = collection(this.firestore, 'users');
+      const docRef = await addDoc(usersCollection, {
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        birthDate: this.user.birthDate,
+        address: this.user.address,
+        zipCode: this.user.zipCode,
+        city: this.user.city
+      });
+      console.log('User saved with ID:', docRef.id);
+      
+      this.dialogRef.close(this.user);
+    } catch (error) {
+      console.error('Error saving user:', error);
+    }
   }
 }
